@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/detect-capital/
 
-package strings;
+package string;
 
 public class DetectCapital {
     public boolean detectCapitalUse(String word) {

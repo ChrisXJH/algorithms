@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/add-strings/
 
-package strings;
+package string;
 
 public class AddStrings {
     public String addStrings(String n1, String n2) {
