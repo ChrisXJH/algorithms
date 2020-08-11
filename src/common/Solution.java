@@ -27,6 +27,17 @@ public class Solution {
         System.out.println(String.join("->", listNodes));
     }
 
+    protected static List<List<Integer>> arrayToList2D(int[][] arr) {
+        List<List<Integer>> list = new ArrayList<>();
+        for (int[] row : arr) {
+            List<Integer> curr = new ArrayList<>();
+            for (int num : row) curr.add(num);
+            list.add(curr);
+        }
+
+        return list;
+    }
+
     // [3,9,20,null,null,15,7]
     protected static TreeNode buildBinaryTree(String str) {
         str = str.substring(1, str.length() - 1);
