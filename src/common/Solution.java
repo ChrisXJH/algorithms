@@ -42,26 +42,36 @@ public class Solution {
     protected static TreeNode buildBinaryTree(String str) {
         str = str.substring(1, str.length() - 1);
         String[] parts = str.split("\\s*,\\s*");
+        Integer[] nodes = new Integer[parts.length];
 
-        if (parts.length == 0 || "null".equals(parts[0])) return null;
+        for (int i = 0; i < parts.length; ++i) {
+            if ("null".equals(parts[i])) continue;
+            nodes[i] = Integer.valueOf(parts[i]);
+        }
 
-        TreeNode root = new TreeNode(Integer.parseInt(parts[0]));
+        return buildBinaryTree(nodes);
+    }
+
+    protected static TreeNode buildBinaryTree(Integer[] nodes) {
+        if (nodes.length == 0 || nodes[0] == null) return null;
+
+        TreeNode root = new TreeNode(nodes[0]);
         Queue<TreeNode> queue = new LinkedList<>();
         int curr = 1;
 
         queue.add(root);
 
-        while (!queue.isEmpty() && curr < parts.length) {
+        while (!queue.isEmpty() && curr < nodes.length) {
             TreeNode node = queue.remove();
 
-            if (!"null".equals(parts[curr])) {
-                node.left = new TreeNode(Integer.parseInt(parts[curr]));
+            if (nodes[curr] != null) {
+                node.left = new TreeNode(nodes[curr]);
                 queue.add(node.left);
             }
             ++curr;
 
-            if (!"null".equals(parts[curr])) {
-                node.right = new TreeNode(Integer.parseInt(parts[curr]));
+            if (nodes[curr] != null) {
+                node.right = new TreeNode(nodes[curr]);
                 queue.add(node.right);
             }
             ++curr;
