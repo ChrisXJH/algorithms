@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class BestTimeToBuyAndSellStockThree extends Solution {
     private static final int INF = Integer.MIN_VALUE / 3;
 
-    public int maxProfit(int[] prices) {
+    public int maxProfit2(int[] prices) {
         int[] hold = new int[3];
         int[] sold = new int[3];
 
@@ -24,6 +24,22 @@ public class BestTimeToBuyAndSellStockThree extends Solution {
         }
 
         return Math.max(Math.max(sold[1], sold[2]), 0);
+    }
+
+    public int maxProfit(int[] prices) {
+        int sold1 = 0;
+        int hold1 = -INF;
+        int sold2 = 0;
+        int hold2 = -INF;
+
+        for (int price : prices) {
+            sold2 = Math.max(hold2 + price, sold2);
+            hold2 = Math.max(sold1 - price, hold2);
+            sold1 = Math.max(hold1 + price, sold1);
+            hold1 = Math.max(-price, hold1);
+        }
+
+        return sold2;
     }
 
     public static void main(String[] args) {
