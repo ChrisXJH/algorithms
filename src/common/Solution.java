@@ -68,7 +68,8 @@ public class Solution {
                 node.left = new TreeNode(nodes[curr]);
                 queue.add(node.left);
             }
-            ++curr;
+
+            if (++curr >= nodes.length) break;
 
             if (nodes[curr] != null) {
                 node.right = new TreeNode(nodes[curr]);
