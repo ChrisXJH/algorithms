@@ -1,4 +1,4 @@
-package string;
+package greedy;
 
 import common.Solution;
 
